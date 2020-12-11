@@ -1,0 +1,20 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: white; 
+}
+canvas {
+  display: block;
+}
+div id{
+  text-size-adjust: 100[x];
+}
+table, th, td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 30px;
+}
+th, td {
+  padding: 5px;
+  text-align: center;    
+}
