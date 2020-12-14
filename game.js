@@ -2,18 +2,17 @@
 let ballA=400; 
 let ballB= 400; 
 let BallSize= 50; 
-
 let score = 0; 
 let GameLevel= "L1";
-let GameOver = 2200; 
+
+let song = "game.mp3";
+let slider; 
 
 // background color for text 
 let elem = document.getElementById('elem');
   elem.style.background = 'red';
 
-
 // user intraction 
-alert
 let questions = 1;
 let questionsLeft = ' [' + questions + ' questions left]';
 let adjective = prompt('Write your full name ' + questionsLeft);
@@ -27,10 +26,15 @@ function setup() {
   createCanvas(600, 600);
   textAlign(CENTER);
   textSize(30);
-
+  song=loadSound("game.mp3",loaded);
+  slider= createSlider(0,1,0.5,0.01)
+}
+function loaded(){
+  song.play();
 }
 //Levels and design 
 function draw() {
+  song.setVolume(slider.value());
   if (GameLevel === "L1"){
     levelOne();
   }
@@ -50,14 +54,12 @@ for (let x = 0; x<= width; x= x+20){
 }
 for (let x = 0; x <=height; x = x+20){
   fill ('white');
-  rect (x, 50,10,10)
-}
-
+  rect (x, 50,10,10)}
 }
 
 // LEVEL 1
 function levelOne(){
-  background ('black')
+  background ('green')
   text("Level 1",width/2,height-30);
   let distToBall= dist(ballA,ballB,mouseX,mouseY);
   if (distToBall < BallSize/2){
@@ -74,7 +76,7 @@ function levelOne(){
 }
 //LEVEL 2
 function levelTwo(){
-  background ('black');
+  background ('yellow');
   text("Level 2",width/2,height-30);
   let distToBall= dist(ballA,ballB,mouseX,mouseY);
   if (distToBall < BallSize/2){
@@ -91,7 +93,7 @@ function levelTwo(){
 }
 // LEVEL 3 
 function levelThree(){
-  background('black');
+  background('red');
   text("Level 3",width/2,height-30);
   let distToBall= dist(ballA,ballB,mouseX,mouseY);
   if (distToBall < BallSize/2){
@@ -102,5 +104,4 @@ function levelThree(){
   }
   ellipse(ballA,ballB,BallSize,BallSize);
 }
-
 
